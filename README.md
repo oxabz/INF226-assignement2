@@ -1,5 +1,7 @@
 # Tiny SQL Injectable Server Example
 
+[![';DROP TABLE students;--](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)](https://xkcd.com/327/)
+
 This project contains a tiny webserver with a little database. It's supposed to be a (crude) group messaging app (e.g., like a Discord channel), but the web api is limited to just two operations: `GET /search?q=<pattern>` to search for messages, and `POST /send` with paramaters `sender` and `message` to send a message.
 
 For example, with the server running, this link will list all messages: http://localhost:5000/search?q=* 
@@ -10,7 +12,7 @@ Fortunately, there's a very nice front-end included (at http://localhost:5000/) 
 ## To use
 You need to install these Python packages first – [Flask](https://flask.palletsprojects.com/en/2.2.x/), [APSW](https://rogerbinns.github.io/apsw/), [Pygments](https://pygments.org/):
 
-```
+```shell
 pip install flask
 pip install apsw
 pip install pygments
@@ -26,7 +28,7 @@ $ flask run
 
 If the `flask` command doesn't exist, you can start use `python -m flask run` instead.
 
-```
+```shell
 $ python -m flask run
  * Debug mode: off
 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
@@ -109,7 +111,7 @@ cursor = conn.execute('INSERT INTO people (firstname,lastname) VALUES (?,?)', (f
 
 It's written in Python and can be installed with `pip`:
 
-```
+```shell
 pip install sqlmap
 ```
 
@@ -117,7 +119,7 @@ pip install sqlmap
 
 To find injection exploits you must provide a URL with (at least) one parameter that might be suitable for injection. In our case, that might be `/search?q=*` (the parameter value should be valid and give a result, so `sqlmap` can tell the difference between a valid and invalid query). To try it, you can run something like:
 
-```
+```shell
 python -m sqlmap.sqlmap --answers custom=N --technique=BEUS --tables -u http://localhost:5000/search?q=\* 
 ```
 
