@@ -4,6 +4,12 @@
 * Using "Log in with *social network*": https://python-social-auth.readthedocs.io/en/latest/configuration/flask.html
 * General Flask docs: https://flask.palletsprojects.com/en/2.2.x/quickstart/
 
+## TODO
+* Get it to run. You need `pip install flask flask_wtf flask_login`, and `flask run`. 
+
+
+-------
+
 ## (was Tiny SQL Injectable Server Example)
 
 [![';DROP TABLE students;--](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)](https://xkcd.com/327/)
