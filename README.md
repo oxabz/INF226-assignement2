@@ -1,4 +1,10 @@
-# Tiny SQL Injectable Server Example
+# Server with Login Example
+
+* Flask login docs: https://flask-login.readthedocs.io/en/latest/
+* Using "Log in with *social network*": https://python-social-auth.readthedocs.io/en/latest/configuration/flask.html
+* General Flask docs: https://flask.palletsprojects.com/en/2.2.x/quickstart/
+
+## (was Tiny SQL Injectable Server Example)
 
 [![';DROP TABLE students;--](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)](https://xkcd.com/327/)
 
