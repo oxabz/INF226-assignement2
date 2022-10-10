@@ -1,4 +1,4 @@
-# Server with Login Example
+# Server with Login Exercise / Example
 
 * Flask login docs: https://flask-login.readthedocs.io/en/latest/
 * Using "Log in with *social network*": https://python-social-auth.readthedocs.io/en/latest/configuration/flask.html
@@ -11,7 +11,7 @@
 * Check the Flask login docs, and add a `logout` route
 * Implement password checking. Now it uses plaintext passwords, stored as plaintext – find a secure way of storing passwords (i.e., with hashing and salt)
 * Optional: The user database is just a `dict` – you can change this to use the SQL database (just add a table and do database lookups instead of dict lookups)
-* Try restarting the server and reusing the login form in the browser. What happens?
+* Try restarting the server and reusing the login form in the browser. What happens? Why?
 
 
 -------
