@@ -1,4 +1,6 @@
+from http import HTTPStatus
 from flask import Flask, abort, request, send_from_directory, make_response, render_template
+from werkzeug.datastructures import WWWAuthenticate
 import flask
 from login_form import LoginForm
 from json import dumps, loads
@@ -62,12 +64,17 @@ def user_loader(user_id):
 @login_manager.request_loader
 def request_loader(request):
     auth = request.headers.get('Authorization')
+
+    # If there is not Authorization header, do nothing, and the login
+    # manager will deal with it (i.e., by redirecting to a login page)
     if not auth:
         return
+
     (auth_scheme, auth_params) = auth.split(maxsplit=1)
     auth_scheme = auth_scheme.casefold()
     if auth_scheme == 'basic':  # Basic auth has username:password in base64
-        (uid,passwd) = b64decode(auth_params).split(':', maxsplit=1)
+        (uid,passwd) = b64decode(auth_params.encode(errors='ignore')).decode(errors='ignore').split(':', maxsplit=1)
+        print(f'Basic auth: {uid}:{passwd}')
         u = users.get(uid)
         if u: # and check_password(u.password, passwd):
             return user_loader(uid)
@@ -76,13 +83,19 @@ def request_loader(request):
         # and authenticates a user, so no username is provided (unless
         # you encode it in the token – see JWT (JSON Web Token), which
         # encodes credentials and (possibly) authorization info)
-        for (uid,u) in enumerate(users):
-            if u.get('token') == auth_params:
+        print(f'Bearer auth: {auth_params}')
+        for uid in users:
+            if users[uid].get('token') == auth_params:
                 return user_loader(uid)
     # For other authentication schemes, see
     # https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication
 
-    abort(HTTPStatus.UNAUTHORIZED)
+    # If we failed to find a valid Authorized header or valid credentials, fail
+    # with 401 Unauthorized and a list of valid authentication schemes
+    # (The presence of the Authorized header probably means we're talking to
+    # a program and not a user in a browser, so we should send a proper
+    # error message rather than redirect to the login page.)
+    abort(HTTPStatus.UNAUTHORIZED, www_authenticate = WWWAuthenticate('Basic realm=inf226, Bearer'))
 
 def pygmentize(text):
     if not hasattr(tls, 'formatter'):
