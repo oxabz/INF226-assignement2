@@ -1,0 +1,6 @@
+flask
+Flask-WTF
+python-dotenv
+flask-login
+bcrypt
+apsw

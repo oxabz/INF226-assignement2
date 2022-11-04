@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>INF226</title>
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.2.2/font/bootstrap-icons.css">
+    <style>
+        .btn-circle {
+            height: 3em;
+            padding-left: 0.5em!important;
+            padding-right: 0.5em!important;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 12px;
+            line-height: 1.428571429;
+            border-radius: 1.5em;
+        }
+        
+        .bottom-right{
+            bottom: 1em;
+            right: 1em;
+        }
+
+        .message{
+            cursor: pointer;
+        }
+
+        .message:hover{
+            background-color: rgba(0, 0, 0, 0.075);
+        }
+    </style>
+</head>
+<body>
+    <header
+        class="d-flex px-5 flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+            <h1 class="fs-3">
+                <i class=" bi bi-chat-left-text"></i> INF226 Chat
+            </h1>
+        </a>
+        <div class="col-md-3 text-end">
+            <a type="button" class="btn btn-primary" href="/logout"><i class="bi bi-box-arrow-right"></i>Log out</a>
+        </div>
+    </header>
+    <main class="container">
+        <div class="my-3 p-3 bg-body rounded shadow-sm">
+            <h6 class="border-bottom pb-2 mb-0">Inbox</h6>
+            <div id="inbox">
+                
+            </div>
+            <p id="inbox-no-message" class="pt-2 text-muted small text-center">No message yet</p>
+        </div>
+        <div class="my-3 p-3 bg-body rounded shadow-sm">
+            <h6 class="border-bottom pb-2 mb-0">Sent</h6>
+            <div id="sent">
+
+            </div>
+            <p id="sent-no-message" class="pt-2 text-muted small text-center">No message yet</p>
+        </div>
+    </main>
+    <a class="btn btn-primary btn-circle bottom-right position-fixed" href="/new">
+        <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="100%" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+                <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+            </svg> New Message 
+        </p>
+    </a>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js" integrity="sha512-/hVAZO5POxCKdZMSLefw30xEVwjm94PAV9ynjskGbIpBvHO9EBplEcdUlBdCKutpZsF+La8Ag4gNrG0gAOn3Ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+
+</html>
